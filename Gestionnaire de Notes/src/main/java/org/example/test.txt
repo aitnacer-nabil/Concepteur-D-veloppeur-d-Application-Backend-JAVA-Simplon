@@ -1,0 +1,78 @@
+   static ControllerNotes controllerNotes;
+    static ControllerEtudiants controllerEtudiants;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+         controllerEtudiants = new ControllerEtudiants();
+         controllerNotes = new ControllerNotes();
+        System.out.println("Entrer ton nom.");
+
+        String nomUtilisateur = scanner.next();
+        System.out.println("#####################################################");
+        System.out.println("Gestionnaire de Notes");
+        System.out.println("Bonjour "+nomUtilisateur);
+        System.out.println("#####################################################");
+
+        System.out.println("Pour Saisie des Notes d'un Étudiant Taper 1");
+        System.out.println("Pour Calcul de la Moyenne des Notes d'un Étudiant Taper 2");
+        System.out.println("Pour exit le programme  Taper 3");
+        int option=scanner.nextInt();
+        gestion:
+        while (true){
+            switch (option){
+                case 1:
+                    System.out.println("entrer le nom de l'étudiant.");
+                    String nom = scanner.next();
+                    Etudiant etudiant = controllerEtudiants.ajouterEtudiant(nom);
+                    aficherEtudient(etudiant);
+                    ajouternotes(etudiant,scanner);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break gestion;
+            }
+        }
+
+
+
+
+    }
+    private static void aficherEtudient(Etudiant etudiant){
+        System.out.println("L'étudiant est " + etudiant.getNom());
+        for (Matier matier: etudiant.getMatiers()
+             ) {
+            System.out.print(matier.getNom() +" : ");
+            for (int note: matier.getNotes()
+                 ) {
+                System.out.print(note+" ");
+            }
+            System.out.println("");
+        }
+
+
+    }
+
+
+    }
+    public static int isInputNoteNumber(String message,Scanner scanner){
+        try {
+            System.out.println(message);
+             int note= scanner.nextInt();
+             return note;
+        }catch (InputMismatchException inputMismatchException){
+            System.out.println("Entre Only number");
+
+        }
+        return 0;
+    }
+        private  void ajouternotes(Etudiant etudiant){
+            int index = controllerEtudiants.getIndex(etudiant);
+            System.out.println("saisir les notes pour "+ etudiant.getNom());
+            System.out.print("Saisir les notes pour chaque Mateir \n");
+            System.out.print("les note doit entre 0 et 20. \n");
+            scanner.nextLine();
+
+                etudiant.getMatiers().get(i).setNotes(notes);
+
+
+            }
